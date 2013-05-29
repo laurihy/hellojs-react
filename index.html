@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>React | HelloJS</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+
+  
+
+  </head>
+  <body>
+
+    <div id="timer">If you're seeing this, something went wrong</div>
+
+        <script src="/react/build/react.js"></script>
+        <script src="/react/build/JSXTransformer.js"></script>
+        <script type="text/jsx">
+
+        /**
+        * @jsx React.DOM
+        */
+
+
+        var Timer = React.createClass({
+          getInitialState: function() {
+            return {secondsElapsed: 0};
+          },
+          tick: React.autoBind(function() {
+            this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+          }),
+          componentDidMount: function() {
+            setInterval(this.tick, 1000);
+          },
+          render: function() {
+            return (
+              <div>
+                {'Seconds Elapsed: ' + this.state.secondsElapsed}
+              </div>
+            );
+          }
+        });
+
+        React.renderComponent(<Timer />, document.getElementById('timer'));
+
+
+        </script>
+
+  </body>
+</html>
